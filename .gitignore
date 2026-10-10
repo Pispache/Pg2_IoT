@@ -1,0 +1,9 @@
+/vendor/
+/.idea/
+/.vscode/
+.env
+/storage/*.key
+/storage/logs/*.log
+/bootstrap/cache/*.php
+.phpunit.result.cache
+.DS_Store

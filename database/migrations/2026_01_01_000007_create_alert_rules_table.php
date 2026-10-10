@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration { public function up(): void { Schema::create('alert_rules',function(Blueprint $t){$t->id();$t->foreignId('device_id')->nullable()->constrained()->cascadeOnDelete();$t->foreignId('area_id')->nullable()->constrained()->cascadeOnDelete();$t->string('name');$t->enum('variable',['temperature','humidity','battery']);$t->decimal('min_value',6,2)->nullable();$t->decimal('max_value',6,2)->nullable();$t->enum('severity',['low','medium','high','critical'])->default('medium');$t->boolean('is_active')->default(true);$t->timestamps();}); } public function down(): void { Schema::dropIfExists('alert_rules'); } };

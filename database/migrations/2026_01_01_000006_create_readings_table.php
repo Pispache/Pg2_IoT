@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration { public function up(): void { Schema::create('readings',function(Blueprint $t){$t->id();$t->foreignId('device_id')->constrained()->cascadeOnDelete();$t->decimal('temperature',6,2);$t->decimal('humidity',6,2);$t->decimal('battery',6,2)->nullable();$t->smallInteger('wifi_signal')->nullable();$t->timestamp('recorded_at')->index();$t->timestamp('received_at')->index();$t->json('raw_payload')->nullable();$t->index(['device_id','recorded_at']);}); } public function down(): void { Schema::dropIfExists('readings'); } };
